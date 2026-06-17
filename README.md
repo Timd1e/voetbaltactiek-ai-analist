@@ -1,9 +1,9 @@
 # Multimodale AI Video-Analist
 
-Een ontkoppelde full-stack webapplicatie die korte voetbalwedstrijd- of trainingsclips analyseert met behulp van Multimodal GenAI (Gemini 1.5 Pro) en de resultaten interactief terugkoppelt.
+Een ontkoppelde full-stack webapplicatie die korte voetbalwedstrijd- of trainingsclips analyseert met behulp van Multimodal GenAI (Gemini 3.5 Flash) en de resultaten interactief terugkoppelt.
 
 ## Mappenstructuur
-- `/backend`: Node.js/Express server voor videoverwerking en AI-orchestratie.
+- `/backend`: Node.js/Express server voor videoverwerking en de regie over de AI-dataflow.
 - `/frontend`: HTML5, CSS en Javascript dashboard met videospeler en klikbare tijdlijn.
 
 ## Lokaal opstarten
