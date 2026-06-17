@@ -1,0 +1,69 @@
+/* --- Global Styles --- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: #f0f4f8; padding: 30px; color: #333; line-height: 1.5; }
+.container { max-width: 1300px; margin: auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+h1 { text-align: center; margin-bottom: 30px; color: #0056b3; font-weight: 800; font-size: 2.5rem; }
+
+/* --- Step 1: Upload Card --- */
+.upload-card { margin-bottom: 30px; padding: 30px; background: #fff; border-radius: 12px; border: 2px dashed #b1bdce; text-align: center; transition: 0.3s; }
+.upload-card:hover { border-color: #0056b3; background: #fbfdff; }
+input[type="file"] { padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: #f9f9f9; cursor: pointer; }
+.hidden { display: none !important; }
+
+/* --- Step 2: Dashboard Layout --- */
+.dashboard { display: flex; gap: 30px; margin-top: 20px; align-items: flex-start; }
+
+/* --- Video & Timeline Section (Left) --- */
+.video-section { flex: 2; display: flex; flex-direction: column; gap: 20px; max-width: 65%; }
+
+/* FIX: Video Grootte Beperken & Positionering controls */
+.video-container { width: 100%; background: #000; border-radius: 12px; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+video { max-width: 100%; max-height: 55vh; display: block; outline: none; }
+
+/* --- VISUELE TIJDSBALK (RANGE SLIDER) FIX --- */
+.timeline-container { background: #fff; padding: 15px 20px; border-radius: 12px; border: 1px solid #e1e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.time-labels { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #495057; margin-bottom: 10px; font-family: monospace; }
+
+.slider-track-container { position: relative; width: 100%; height: 12px; background: #e9ecef; border-radius: 6px; cursor: pointer; margin: 15px 0; touch-action: none; /* Cruciaal voor mobiel/touch support */ }
+.slider-track { position: absolute; height: 100%; background: #0056b3; border-radius: 6px; z-index: 1; /* Wordt via JS aangepast */ }
+
+/* FIX: Schuifjes Positionering en Clickability */
+.slider-handle { position: absolute; top: 50%; width: 24px; height: 24px; background: #fff; border: 4px solid #0056b3; border-radius: 50%; transform: translate(-50%, -50%); cursor: grab; z-index: 3; /* Zorgt dat ze boven de track liggen */ transition: box-shadow 0.2s, transform 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.slider-handle:hover { box-shadow: 0 0 0 6px rgba(0, 86, 179, 0.15); transform: translate(-50%, -50%) scale(1.1); }
+.slider-handle.active { cursor: grabbing; box-shadow: 0 0 0 10px rgba(0, 86, 179, 0.25); }
+
+/* --- Buttons --- */
+.analyze-btn { width: 100%; padding: 18px; background: #28a745; color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2); }
+.analyze-btn:hover { background: #218838; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3); }
+.analyze-btn:disabled { background: #b1bdce; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* --- Feedback Section (Right) --- */
+.feedback-container { flex: 1; background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e1e8f0; position: sticky; top: 30px; max-height: 85vh; overflow-y: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+.feedback-container h2 { margin-bottom: 20px; color: #1a1a1a; font-size: 1.4rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+
+/* --- Feedback Items Styles --- */
+ul#tipsList { display: flex; flex-direction: column; gap: 15px; }
+
+li.tip-item { padding: 18px; background: #fff; border-radius: 8px; cursor: pointer; transition: 0.2s; border: 1px solid #e6ebf1; box-shadow: 0 3px 6px rgba(0,0,0,0.02); }
+li.tip-item:hover { background: #fbfdff; transform: translateX(4px); border-color: #d1d9e6; }
+
+/* Dynamische randen op basis van type */
+li.aanvallend { border-left: 6px solid #28a745; }  /* Groen */
+li.verdedigend { border-left: 6px solid #dc3545; }  /* Rood */
+
+/* Header binnen een tip */
+.tip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.timestamp { font-weight: bold; color: #495057; font-size: 15px; font-family: monospace; }
+
+/* Badges styling */
+.badge { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.8px; }
+.badge.aanvallend { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.badge.verdedigend { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* Tekst styling */
+.tip-title { display: block; margin-bottom: 6px; font-size: 16px; font-weight: 700; color: #1a1a1a; }
+.tip-text { font-size: 14px; color: #555; line-height: 1.5; }
+
+/* Loader */
+.loader-text { color: #d9534f; font-weight: bold; animation: pulse 1.5s infinite; margin-top: 15px; font-size: 16px; }
+@keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }

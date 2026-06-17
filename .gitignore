@@ -1,0 +1,9 @@
+# Negeer de dependencies van de backend
+backend/node_modules/
+
+# Negeer je geheime API keys en instellingen
+backend/.env
+
+# Algemene OS bestanden
+.DS_Store
+Thumbs.db
