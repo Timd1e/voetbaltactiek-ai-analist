@@ -16,12 +16,10 @@ app.post('/api/upload-video', upload.single('video'), async (req, res) => {
             return res.status(400).json({ error: 'Geen videobestand geüpload.' });
         }
 
-        // Pak de start- en eindtijd uit de request body
-        const { startTime, endTime } = req.body;
-        console.log(`Analyse aangevraagd voor fragment: seconde ${startTime} tot ${endTime}`);
+        const { startTime, endTime, focus } = req.body;
+        console.log(`Analyse aangevraagd: ${startTime}s tot ${endTime}s met focus: ${focus}`);
 
-        // Stuur de tijden mee naar de AI service
-        const analysisResult = await analyzeVideo(req.file.buffer, req.file.mimetype, startTime, endTime);
+        const analysisResult = await analyzeVideo(req.file.buffer, req.file.mimetype, startTime, endTime, focus);
         
         res.json({ success: true, data: analysisResult });
     } catch (error) {

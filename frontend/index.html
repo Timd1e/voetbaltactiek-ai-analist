@@ -10,9 +10,29 @@
     <div class="container">
         <h1>Voetbaltactiek AI Analist</h1>
         
-        <div class="upload-card">
+        <div class="upload-card" id="dropZone">
+            <div class="upload-icon">📁</div>
+            <p style="font-size: 1.1rem; color: #64748b; font-weight: 500;">
+                Sleep je voetbalvideo hiernaartoe of
+            </p>
+            
+            <label for="videoInput" class="custom-file-upload">
+                Kies een bestand
+            </label>
             <input type="file" id="videoInput" accept="video/mp4">
-            <div id="loading" class="hidden loader-text">🤖 AI analyseert fragment... Even geduld.</div>
+            <span id="fileNameDisplay" style="font-size: 0.9rem; color: #0056b3; font-weight: 600;"></span>
+
+            <div class="focus-container">
+                <label for="focusInput">Tactische focus van de analyse</label>
+                <select id="focusInput">
+                    <option value="algemeen">Algemene analyse (Aanval & Verdediging)</option>
+                    <option value="drukzetten">Drukzetten (Jagen & Linies sluiten)</option>
+                    <option value="omschakeling">Omschakeling (Transitiemomenten)</option>
+                    <option value="positionering">Individuele positionering (Veldbezetting)</option>
+                </select>
+            </div>
+
+            <div id="loading" class="hidden loader-text" style="margin-top: 15px;">🤖 Multi-Model Consensus analyseert fragment... Even geduld.</div>
         </div>
 
         <div class="dashboard hidden" id="dashboard">
@@ -36,12 +56,17 @@
                 <button id="uploadBtn" class="analyze-btn">Analyseer Geselecteerd Fragment</button>
             </div>
 
-            <div class="feedback-container">
-                <h2>Tactische Adviezen</h2>
-                <ul id="tipsList"></ul>
-            </div>
-        </div>
+            <d<div class="feedback-container">
+    <h2>Tactische Analyse</h2>
+    
+    <div id="summaryBox" class="hidden" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <strong style="color: #0056b3; display: block; margin-bottom: 8px;">📋 Overkoepelende Analyse:</strong>
+        <p id="summaryText" style="font-size: 14px; color: #334155; font-style: italic; line-height: 1.6;"></p>
     </div>
+
+    <h3>Gedetailleerde Highlights</h3>
+    <ul id="tipsList" style="margin-top: 10px;"></ul>
+</div>
 
     <script src="js/player.js"></script>
     <script src="js/app.js"></script>
